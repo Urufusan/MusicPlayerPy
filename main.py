@@ -109,9 +109,11 @@ class musicplayer(ctk.CTk):
         self.playlist.get()
         def playsong(event):
             selectedsong = self.playlist.get(self.playlist.curselection())
-            self.song.set(selectedsong)
-            pygame.mixer.music.load(selectedsong)
-            pygame.mixer.music.play()
+            if selectedsong: # Parse Nones...
+                self.song.set(selectedsong)
+                print(selectedsong)
+                pygame.mixer.music.load(selectedsong)
+                pygame.mixer.music.play()
         
         self.playlist.bind("<Double-Button-1>", playsong)
 
