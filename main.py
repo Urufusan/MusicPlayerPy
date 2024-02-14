@@ -2,6 +2,7 @@ import tkinter
 import customtkinter as ctk
 import pygame
 import os
+import sys
 import threading
 from CTkListbox import CTkListbox
 from customtkinter import filedialog as fd
@@ -123,7 +124,7 @@ if __name__ == "__main__":
         root.destroy()
         pygame.mixer.music.stop()
     iconobject = tkinter.PhotoImage(name="appicon", file="appicon.png") # Ico is windows specific
-    root.wm_iconphoto(True, iconobject)
+    root.wm_iconphoto(sys.platform == "linux", iconobject)
     root.wm_protocol("WM_DELETE_WINDOW", func=stopapp)
     root.mainloop()
     app.timerproc.cancel()
